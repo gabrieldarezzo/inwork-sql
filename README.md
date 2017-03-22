@@ -7,25 +7,25 @@
 
 :memo: Vamos utilizar Mysql como Server/Client
 
-Durante os exemplos utilizei no client utilizei o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)  
+Durante os exemplos utilizei Server de MySql o [WampServer](http://www.wampserver.com/en/), e como client utilizei o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)  
 
-E como Server do Mysql utilizei o [WampServer](http://www.wampserver.com/en/)
 
-Caso você esteja com **zero** vontade de baixar toda essa caralhada de coisas e configurar. 
-Você pode simplemente usar um site como esse:
+
+Caso você esteja com **zero** vontade de baixar toda essa caralhada de coisas e configurar.   
+Você pode simplemente usar um site como esse:  
 http://sqlfiddle.com/
 
 
 ## Eplicação de como criar um Banco, Tabela
 
-Mysql 
-Maneira simplista...
--> O Banco armazena tabelas
--> Tabelas armazena Registros.
+Mysql   
+Maneira simplista...  
+-> O Banco armazena tabelas   
+-> Tabelas armazena Registros.   
 
 Então pela lógica, armazenar registros (nome, email, telefone, data de nascimento, etc precisamos de um banco...)
 
-o SQL-Statment é:
+o SQL-Statment é:  
 ```sql
 CREATE DATABASE nome_do_banco
 ```
@@ -38,25 +38,25 @@ CREATE DATABASE exemplo;
 E criar uma tabela chamada 'produto' que contem o nome do produto.
 ```sql
 CREATE TABLE produto(
-	 id 			INT(8) PRIMARY KEY AUTO_INCREMENT
+	 id				INT(8) PRIMARY KEY AUTO_INCREMENT
 	,nome_produto	VARCHAR(50) NOT NULL
 );
 ```
 
 OUWWWWW! É coisa pra caramba nova aqui hehe.
 
-Basicamente informamos que a tabela produto tem dois campos **(id, nome_produto)**
-E cada um desses campos possui um data_type/tipo primitivo (INT/VARCHAR).
+Basicamente informamos que a tabela produto tem dois campos **(id, nome_produto)**  
+E cada um desses campos possui um data_type/tipo primitivo (INT/VARCHAR).   
  
-No caso o **id** possui um INT (inteiro)
-  -> uma CONSTRAINT de **PRIMARY KEY** :key:.  
-  -> PRIMARY KEY é unica e não pode ser inserido nenhum registro na tabela se não tiver o mesmo preenchido.  
+No caso o **id** possui um INT (inteiro)  
+  -> uma CONSTRAINT de **PRIMARY KEY** :key:.    
+  -> PRIMARY KEY é unica e não pode ser inserido nenhum registro na tabela se não tiver o mesmo preenchido.    
 
-Leia mais:  
+Leia mais:   
 https://pt.wikipedia.org/wiki/Chave_prim%C3%A1ria  
 
 
-NOT NULL é exatamente a tradução fala.... :exclamation:NÃO PODE SER NULO AQUI NÃO TIOZÃO:exclamation:  
+NOT NULL é exatamente a tradução fala.... :exclamation:NÃO PODE SER NULO AQUI NÃO TIOZÃO:exclamation:   
 
 Já no caso do **nome_produto** temos VARCHAR(50).  
 
