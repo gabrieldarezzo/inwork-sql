@@ -19,12 +19,12 @@ INSERT INTO fruta(nome) VALUES ('Banana');
 INSERT INTO fruta(nome) VALUES ('Morango');
 INSERT INTO fruta(nome) VALUES ('Tomate');
 
-
+ 
 CREATE TABLE pessoa_fruta(
 	  frutas_id	INT (8)
 	 ,pessoa_id	INT (8)	 
 );
-INSERT INTO pessoa_fruta(pessoa_id, frutas_id) VALUES (1,1); /* Ronaldo comeu uma banana  ( ?� ?? ?�)   */
+INSERT INTO pessoa_fruta(pessoa_id, frutas_id) VALUES (1,1); /* Ronaldo comeu uma banana  ( ͡° ͜ʖ ͡°)  */
 INSERT INTO pessoa_fruta(pessoa_id, frutas_id) VALUES (2,2); 
 INSERT INTO pessoa_fruta(pessoa_id, frutas_id) VALUES (2,3);
 INSERT INTO pessoa_fruta(pessoa_id, frutas_id) VALUES (3,3);
@@ -49,7 +49,7 @@ nome      nome
 Hipster   Tomate   
 Hipster   Morango  
 Penelope  Tomate   
-Ronaldo   Banana    ( ?� ?? ?�)
+Ronaldo   Banana    ( ͡° ͜ʖ ͡°) 
 */
 
 
