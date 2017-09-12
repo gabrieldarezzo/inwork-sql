@@ -83,3 +83,124 @@ Exercicios:
   - (1) Crie um banco de dados com o nome de **no_trabalho**
   - (2) Crie uma tabela com o nome **pessoa** que possa registrar um **nome**, **e-mail**, e que cada registro possua um número de identificação único  
   - (3) Crie uma tabela com o nome **modelo_celular** que possa registrar um **nome**, **modelo**, **descrição**, **Data de Fabricação** 
+  
+  
+  
+  
+  
+ ------
+## Exemplo de Cursos x Pré-requisito.  
+### Um curso pode ter vários cursos como pré-requisito.  
+
+Ex:  
+  Citar  
+Pra fazer Cálculo 1 precisa de Matemática   
+Pra fazer Cálculo 2 precisa de Matemática   
+------------------------------------------
+Pra fazer Cálculo 2 precisa de Cálculo 1   
+ 
+Então só ai precisamos de uma tabela cursos para armazenar um ID + Nome e uma tabela auxiliar para armazenar cara dependência.
+ 
+ 
+Talk is cheap, show me te code....
+ 
+Bora criar uma base e as tabelas:
+```sql
+CREATE DATABASE minhabase;
+USE minhabase;
+
+CREATE TABLE cursos (
+     cur_id     INT(8) PRIMARY KEY AUTO_INCREMENT 
+    ,cur_nome   VARCHAR(50) NOT NULL
+    
+);
+
+
+INSERT cursos (cur_nome) VALUES ('Matemática Básica');
+INSERT cursos (cur_nome) VALUES ('Cálculo 1');
+INSERT cursos (cur_nome) VALUES ('Cálculo 2')
+
+CREATE TABLE curso_req (
+     cur_id INT(8) NOT NULL
+    ,cur_id_req INT(8) NOT NULL
+    ,CONSTRAINT `fk_curso_req` FOREIGN KEY (`cur_id`) REFERENCES `cursos` (`cur_id`)
+    ,CONSTRAINT `fk_cursos_0` FOREIGN KEY (`cur_id_req`) REFERENCES `cursos` (`cur_id`)
+);
+
+```   
+
+Show, agora vamos popular alguns dados pra testar:
+
+```sql   
+INSERT curso_req (cur_id, cur_id_req) VALUES (2, 1); /*Pra fazer Cálculo 1 precisa de Matemática Básica*/
+INSERT curso_req (cur_id, cur_id_req) VALUES (3, 1); /*Pra fazer Cálculo 2 precisa de Matemática Básica*/
+INSERT curso_req (cur_id, cur_id_req) VALUES (3, 2); /*Pra fazer Cálculo 2 precisa de Cálculo 1*/
+
+```     
+Agora vamos testar...    
+```sql   
+SELECT * FROM cursos_req WHERE cursos_req.cur_id = 3
+/*
+cur_id  cur_id_req  
+------  ------------
+     3             1
+     3             2
+*/
+```   
+LEGAL!!!   
+Funcionou certinho, Calculo 2: precisa de ( Mat + Calculo 1)  
+Mas seria massa se desse pra colocar o nome.  
+  
+#### JOINS
+Nisso é só usar um JOIN.... Ex:   
+```sql   
+SELECT 
+    cursos.cur_nome,
+    curso_pre.cur_nome AS pre_requisito
+FROM cursos_req
+INNER JOIN cursos AS curso_pre ON (
+    cursos_req.cur_id_req = curso_pre.cur_id
+)
+INNER JOIN cursos ON (  
+    cursos_req.cur_id = cursos.cur_id   
+)
+
+/*
+cur_nome    pre_requisito        
+----------  ---------------------
+Cálculo 1   Matemática Básica  
+Cálculo 2   Matemática Básica  
+Cálculo 2   Cálculo 1           
+*/
+```   
+ 
+Como está bem estruturadinho, da pra fazer algumas brincadeiras, ex:   
+
+```sql   
+SELECT 
+    cursos.cur_nome
+    ,COUNT(cursos_req.cur_id) AS qnt_materias_pre    
+FROM cursos
+LEFT JOIN cursos_req ON (  
+    cursos_req.cur_id = cursos.cur_id   
+)
+GROUP BY cursos.cur_id
+;
+
+/*
+cur_nome             qnt_materias_pre  
+-------------------  ------------------
+Matemática Básica                     0
+Cálculo 1                             1
+Cálculo 2                             2
+
+*/
+```   
+Enfim acho q deu pra pegar legal neh?  
+(Pra entender melhor o funcionamento do INNER join, troca ali pra (RIGHT|LEFT)  
+  
+Caso não conheça alguma das clausulas SQL no exemplo estude elas individualmente pra não ficar patinando.   
+ 
+A ideia era exemplificar com código.  
+Bons estudos.  
+ 
