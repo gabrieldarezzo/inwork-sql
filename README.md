@@ -80,17 +80,19 @@ https://dev.mysql.com/doc/refman/5.7/en/create-table.html
 ## Exemplo de Cursos x Pré-requisito.  
 ### Um curso pode ter vários cursos como pré-requisito.  
 
-Ex:  
-  Citar  
+Veja o exemplo abaixo:
+
 Pra fazer `Cálculo 1` precisa de conhecimentos em `Matemática`   
-Pra fazer `Cálculo 2` precisa de conhecimentos em `Matemática` e `Cálculo 1`   
+Pra fazer `Cálculo 2` precisa de conhecimentos em `Matemática` e `Cálculo 1`  
+
+
 ------------------------------------------
 Pensando em um modelo de dados, só ai precisamos de:
 - Uma tabela cursos para armazenar um ID + Nome (`Matemática`, `Cálculo 1`, `Cálculo 2`)
 - Uma tabela auxiliar para armazenar as dependências de cada curso. (`Cálculo 1` precisa de conhecimentos em `Matemática`)
 
  
-Bora criar uma base e as tabelas, afinal... Talk is cheap, show me te code....
+Bora criar uma base e as tabelas, afinal... Talk is cheap, show me the code....
 ```sql
 CREATE DATABASE minhabase;
 USE minhabase;
