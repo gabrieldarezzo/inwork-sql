@@ -161,9 +161,8 @@ Cálculo 2   Cálculo 1
 */
 ```   
 
-desas forma com apenas 1 Query, retornamos todos os cursos refernciando as F.K. (foreign key) com as P.K. (priamary key),
-No caso 
-```sql curso_req.cur_id_req = curso_pre.cur_id```
+Dessa forma com apenas 1 Query, retornamos todos os cursos refernciando as F.K. (foreign key) com as P.K. (priamary key),
+No caso ```curso_req.cur_id_req = curso_pre.cur_id```
 
 ## O problema do N+1
 Vamos utilizar um exemplo de código em `<?php` para exemplificar o erro de N+1:
