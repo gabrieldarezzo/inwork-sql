@@ -196,9 +196,9 @@ Matemática
 Cálculo 1
 ```
 
-Porem no total fizemos 3 Querys, sendo:
-1 - Para pegar todos requisitos dos cursos `SELECT cur_id, cur_id_req from curso_req where cur_id = 3`,
-2x Pois durante o laço de repetição `foreach` batemos 2x vezes no banco:
+Porem no total fizemos 3 Querys, sendo:  
+- 1 - Para pegar todos requisitos dos cursos `SELECT cur_id, cur_id_req from curso_req where cur_id = 3`,
+- 2x Pois durante o laço de repetição `foreach` batemos 2x vezes no banco:  
 ```sql
 SELECT cur_id, cur_id_req from curso_req where cur_id = 1
 SELECT cur_id, cur_id_req from curso_req where cur_id = 2
@@ -207,7 +207,7 @@ SELECT cur_id, cur_id_req from curso_req where cur_id = 2
 Para evitar isso, poderiamos ter simplesmente feito apenas 1 query, que retorna todos os requisitos e informações dos cursos.
 Podemos deixar a aplicação muito mais performatica e evitando um stress para o banco desnecessario e/ou diminuir brutalmente o tempo de processamento.
 
-Imagine uma rotina onde temos 200 mil registros, e cada loop vai bater novamente no banco.
+Imagine uma rotina onde temos `200 mil registros`, e cada `loop` vai bater novamente no banco (N+1)
 
 Para mais informações a respeito do problema do `N+1`:
 https://pt.stackoverflow.com/questions/307264/o-que-%C3%A9-o-problema-das-queries-n1
@@ -241,7 +241,7 @@ Cálculo 2                             2
 */
 ```   
 
-(Pra entender melhor o funcionamento do INNER join, troca ali pra (RIGHT|LEFT)  
+(Pra entender melhor o funcionamento do `INNER` join, troca ali pra (RIGHT|LEFT)  
   
 Caso não conheça alguma das clausulas SQL no exemplo estude elas individualmente.
 
@@ -252,8 +252,8 @@ Exercicios extras:
 - (1) Crie um banco de dados com o nome de **no_trabalho**
 - (2) Crie uma tabela com o nome **pessoa** que possa registrar um **nome**, **e-mail**, e que cada registro possua um número de identificação único
 - (3) Crie uma tabela com o nome **modelo_celular** que possa registrar um **nome**, **modelo**, **descrição**, **Data de Fabricação**
-
-
+- (4) Adicione na tabela `pessoa` os campos: cep, endereco, nr, complemento, lat, lng
+- (5) Adicione o CEP: '05373-020' na tabela, e verifique se o zero está a esquerda :hehe: 
 
 
 
